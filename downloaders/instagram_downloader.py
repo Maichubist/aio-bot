@@ -1,20 +1,36 @@
-# import instaloader
+import requests
+from instaloader import Instaloader, Profile, Post
 
+def send_profile(u: str):
+    
+    u = u
+    L = Instaloader()
+    try:
+        
+        L = Instaloader()
+        # L.load_session_from_file('maichubist')
+        profile = Profile.from_username(L.context, u)
+        # for post in profile.get_posts():
+        #     L.download_profile(profile)
+        
 
+    except Exception as err:
+        print(err)
 
 def send_photo_inst(url: str):
     pass
 
 def send_video_inst(url: str):
-    pass
-    # L = instaloader.Instaloader()
-    # post = instaloader.Post.from_shortcode(L.context, url.split("/")[-2])
-    # return post.video_url
+    try:
+        L = Instaloader()
+        post = Post.from_shortcode(L.context, url.split("/")[-2])
+        if post.is_video:
+            video = requests.get(post.video_url)
+            return video.content
+        else:
+            raise Exception('It is not a video')
+    except Exception as er:
+        raise er
 
-
-    # media_id = asparagus.from_url(url).post_id
-    # shortcode = L.get_shortcode_from_media_id(media_id)
-    # post = instaloader.Post.from_shortcode(L.context, shortcode)
-    # media_url = post.url
-    # print(media_url)
-    # return media_url
+# print(send_video_inst('https://www.instagram.com/reel/CntWhFcqQ2k/?igshid=YmMyMTA2M2Y='))
+# send_profile('viktoriavolyn')

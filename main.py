@@ -19,7 +19,7 @@ from templates.greeting import g
 from validator import validate_url
 
 
-
+# TOKEN_T = "6098710061:AAGaKYX0J-MHSpw3-fFnK-k5J3v5KQB9a7c"
 TOKEN = '6008738311:AAHiBvctTkedxPZxtt05yiP8tPEPjW86Gxg'
 
 
@@ -150,8 +150,31 @@ async def instagram_processer(callback_query: types.CallbackQuery):
         await bot.send_message(chat_id=message.chat.id, text="Got a link, processing it")
         logger.info(f"{message.from_user.id}|{message.from_user.full_name} sent a link")
         link = message.text
-        await state.finish()
-        await message.reply("Media from Instagram")
+        if message.text != "/exit" and validate_url(link):
+            await state.finish()
+            if content_type == "videoi":
+                try:
+                    logger.info(f"{message.from_user.id}|{message.from_user.full_name}| THE PROCES BEGINS")
+                    # await bot.send_message(chat_id=message.chat.id, text="It may take some time.\nWhile saving file on your device, add '.mp3', it will help your phone to play audio")
+                    video = send_video_inst(link)
+                    await bot.send_video(chat_id=message.chat.id, video=video)
+                    # if send_audio(link):
+                        
+                    #     audio = types.InputFile('audio.mp3')
+                    #     await bot.send_audio(chat_id=message.chat.id, audio=audio)
+                    #     os.remove('audio.mp3')
+                    logger.info(f"{message.from_user.id}|{message.from_user.full_name}| THE PROCES ENDS")
+                except Exception as er:
+                    await message.reply(f"There was an error: \n{er}")
+                    logger.error(f"There was an error: {er}")
+            else:
+                await bot.send_message(callback_query.from_user.id, f'{callback_query.from_user.full_name} = {content_type}|FAILED ')
+        elif message.text == "/exit":
+            await state.finish()
+            await message.reply(f"Now you can choose another option")
+        else:
+            logger.error(f"{message.from_user.full_name} did not sent correct link")
+            await message.reply(f"It doesn`t seem like a correct link. Try one more time\nIf you want to change option, press /exit")
 
 @dp.callback_query_handler(lambda c: c.data and c.data.startswith('tk_'))
 async def tiktok_processer(callback_query: types.CallbackQuery):

@@ -13,3 +13,49 @@ client_session: <aiohttp.client.ClientSession object at 0x7fcc701d1e40>
 2023-03-09 12:33:14 - asyncio - ERROR - Unclosed connector
 connections: ['[(<aiohttp.client_proto.ResponseHandler object at 0x7fcc704fd540>, 18177.355879277)]']
 connector: <aiohttp.connector.TCPConnector object at 0x7fcc701d1d20>
+2023-03-09 22:02:01 - aiogram.dispatcher.dispatcher - INFO - Start polling.
+2023-03-09 22:02:06 - aiogram.dispatcher.dispatcher - WARNING - Polling is stopped.
+2023-03-09 22:02:06 - aiogram.dispatcher.dispatcher - INFO - Stop polling...
+2023-03-09 22:02:06 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7fd8ec71e080>
+2023-03-10 00:29:56 - aiogram.dispatcher.dispatcher - INFO - Start polling.
+2023-03-10 00:30:21 - telegram - INFO - 404237030|Andrii choose /download
+2023-03-10 00:30:28 - aiogram.dispatcher.dispatcher - WARNING - Polling is stopped.
+2023-03-10 00:30:28 - aiogram.dispatcher.dispatcher - INFO - Stop polling...
+2023-03-10 00:30:28 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7fcf1f4b5ae0>
+2023-03-10 00:30:59 - aiogram.dispatcher.dispatcher - INFO - Start polling.
+2023-03-10 00:31:04 - telegram - INFO - 404237030|Andrii choose /download
+2023-03-10 00:31:06 - telegram - INFO - 404237030|Andrii choose Instagram
+2023-03-10 00:31:07 - telegram - INFO - 404237030|Andrii choose videoi
+2023-03-10 00:31:07 - telegram - INFO - Andrii choose videoi
+2023-03-10 00:31:10 - telegram - INFO - 404237030|Andrii sent a link
+2023-03-10 00:31:10 - telegram - INFO - 404237030|Andrii| THE PROCES BEGINS
+2023-03-10 00:31:16 - telegram - INFO - 404237030|Andrii| THE PROCES ENDS
+2023-03-10 00:31:25 - aiogram.dispatcher.dispatcher - WARNING - Polling is stopped.
+2023-03-10 00:31:25 - aiogram.dispatcher.dispatcher - INFO - Stop polling...
+2023-03-10 00:31:25 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7fe215e5db10>
+2023-03-10 00:31:25 - asyncio - ERROR - Unclosed connector
+connections: ['[(<aiohttp.client_proto.ResponseHandler object at 0x7fe215e802e0>, 30736.537321454)]']
+connector: <aiohttp.connector.TCPConnector object at 0x7fe215e5d9f0>
+2023-03-10 00:34:39 - aiogram.dispatcher.dispatcher - INFO - Start polling.
+2023-03-10 00:34:41 - aiogram.dispatcher.dispatcher - WARNING - Polling is stopped.
+2023-03-10 00:34:41 - aiogram.dispatcher.dispatcher - INFO - Stop polling...
+2023-03-10 00:34:41 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7fbc5a949120>
+2023-03-10 00:34:45 - aiogram.dispatcher.dispatcher - INFO - Start polling.
+2023-03-10 00:35:02 - telegram - INFO - 404237030|Andrii choose /download
+2023-03-10 00:35:04 - telegram - INFO - 404237030|Andrii choose Instagram
+2023-03-10 00:35:05 - telegram - INFO - 404237030|Andrii choose videoi
+2023-03-10 00:35:05 - telegram - INFO - Andrii choose videoi
+2023-03-10 00:35:07 - telegram - INFO - 404237030|Andrii sent a link
+2023-03-10 00:35:07 - telegram - INFO - 404237030|Andrii| THE PROCES BEGINS
+2023-03-10 00:35:12 - telegram - INFO - 404237030|Andrii| THE PROCES ENDS
+2023-03-10 00:35:17 - aiogram.dispatcher.dispatcher - WARNING - Polling is stopped.
+2023-03-10 00:35:17 - aiogram.dispatcher.dispatcher - INFO - Stop polling...
+2023-03-10 00:35:17 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f1e6f41d180>
+2023-03-10 00:35:17 - asyncio - ERROR - Unclosed connector
+connections: ['[(<aiohttp.client_proto.ResponseHandler object at 0x7f1e6f3dfdc0>, 30971.852806839)]']
+connector: <aiohttp.connector.TCPConnector object at 0x7f1e6f41d060>

@@ -3,7 +3,7 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
 youtube_k = KeyboardButton('YouTube')
 tiktok_k = KeyboardButton('TikTok (DON`T USE)')
-instagram_k = KeyboardButton('Instagram (DON`T USE)')
+instagram_k = KeyboardButton('Instagram')
 internet_k = KeyboardButton('Internet (DON`T USE)')
 
 
