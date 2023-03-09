@@ -1,0 +1,15 @@
+2023-03-09 12:32:37 - aiogram.dispatcher.dispatcher - INFO - Start polling.
+2023-03-09 12:32:46 - telegram - INFO - 404237030|Andrii choose /download
+2023-03-09 12:32:47 - telegram - INFO - 404237030|Andrii choose YouTube
+2023-03-09 12:32:48 - telegram - INFO - 404237030|Andrii choose audio
+2023-03-09 12:32:50 - telegram - INFO - 404237030|Andrii sent a link
+2023-03-09 12:32:50 - telegram - INFO - 404237030|Andrii| THE PROCES BEGINS
+2023-03-09 12:32:53 - pytube.streams - INFO - downloading (4330529 total bytes) file to buffer
+2023-03-09 12:32:53 - telegram - INFO - File size is 4.13mb
+2023-03-09 12:33:14 - aiogram.dispatcher.dispatcher - WARNING - Polling is stopped.
+2023-03-09 12:33:14 - aiogram.dispatcher.dispatcher - INFO - Stop polling...
+2023-03-09 12:33:14 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7fcc701d1e40>
+2023-03-09 12:33:14 - asyncio - ERROR - Unclosed connector
+connections: ['[(<aiohttp.client_proto.ResponseHandler object at 0x7fcc704fd540>, 18177.355879277)]']
+connector: <aiohttp.connector.TCPConnector object at 0x7fcc701d1d20>
