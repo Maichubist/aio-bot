@@ -1,17 +1,19 @@
 import requests
 from instaloader import Instaloader, Profile, Post
+L = Instaloader()
+L.login('grigori_downloader', 'Andreipiska22')
 
 def send_profile(u: str):
     
     u = u
-    L = Instaloader()
+    
     try:
         
-        L = Instaloader()
+    
         # L.load_session_from_file('maichubist')
         profile = Profile.from_username(L.context, u)
-        # for post in profile.get_posts():
-        #     L.download_profile(profile)
+        for post in profile.get_posts():
+            L.download_profile(profile)
         
 
     except Exception as err:

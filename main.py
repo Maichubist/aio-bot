@@ -19,7 +19,7 @@ from templates.greeting import g
 from validator import validate_url
 
 
-# TOKEN_T = "6098710061:AAGaKYX0J-MHSpw3-fFnK-k5J3v5KQB9a7c"
+TOKEN_T = "6098710061:AAGaKYX0J-MHSpw3-fFnK-k5J3v5KQB9a7c"
 TOKEN = '6008738311:AAHiBvctTkedxPZxtt05yiP8tPEPjW86Gxg'
 
 
@@ -106,11 +106,6 @@ async def youtube_processer(callback_query: types.CallbackQuery):
                     await bot.send_message(chat_id=message.chat.id, text="It may take some time.\nWhile saving file on your device, add '.mp3', it will help your phone to play audio")
                     audio = send_audio(link)
                     await bot.send_audio(chat_id=message.chat.id, audio=audio)
-                    # if send_audio(link):
-                        
-                    #     audio = types.InputFile('audio.mp3')
-                    #     await bot.send_audio(chat_id=message.chat.id, audio=audio)
-                    #     os.remove('audio.mp3')
                     logger.info(f"{message.from_user.id}|{message.from_user.full_name}| THE PROCES ENDS")
                 except Exception as er:
                     await message.reply(f"There was an error: \n{er}")
