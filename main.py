@@ -1,6 +1,7 @@
 import time
 import asyncio
 import os
+from shutil import rmtree
 
 from aiogram import Bot, Dispatcher, types
 from aiogram.dispatcher import FSMContext
@@ -12,7 +13,7 @@ import keyboards.inline_keyboards as ik
 import keyboards.keyboard_bottons as bk
 from get_link import GetLink, GetResponse
 from downloaders.youtube_downloader import send_video, send_audio
-from downloaders.instagram_downloader import send_photo_inst, send_video_inst
+from downloaders.instagram_downloader import send_photo_inst, send_video_inst, send_profile
 # from downloaders.tiktok_downloader import tiktok_downloader
 from templates.helper import m
 from templates.greeting import g
@@ -104,9 +105,11 @@ async def youtube_processer(callback_query: types.CallbackQuery):
                 try:
                     logger.info(f"{message.from_user.id}|{message.from_user.full_name}| THE PROCES BEGINS")
                     await bot.send_message(chat_id=message.chat.id, text="It may take some time.\nWhile saving file on your device, add '.mp3', it will help your phone to play audio")
-                    audio = send_audio(link)
-                    await bot.send_audio(chat_id=message.chat.id, audio=audio)
-                    logger.info(f"{message.from_user.id}|{message.from_user.full_name}| THE PROCES ENDS")
+                    audio_name = send_audio(link)
+                    with open(f'{audio_name}.mp3', 'rb') as audio:
+
+                        await bot.send_audio(chat_id=message.chat.id, audio=audio)
+                        logger.info(f"{message.from_user.id}|{message.from_user.full_name}| THE PROCES ENDS")
                 except Exception as er:
                     await message.reply(f"There was an error: \n{er}")
                     logger.error(f"There was an error: {er}")
@@ -145,19 +148,27 @@ async def instagram_processer(callback_query: types.CallbackQuery):
         await bot.send_message(chat_id=message.chat.id, text="Got a link, processing it")
         logger.info(f"{message.from_user.id}|{message.from_user.full_name} sent a link")
         link = message.text
-        if message.text != "/exit" and validate_url(link):
+        if message.text != "/exit":
             await state.finish()
             if content_type == "videoi":
                 try:
                     logger.info(f"{message.from_user.id}|{message.from_user.full_name}| THE PROCES BEGINS")
-                    # await bot.send_message(chat_id=message.chat.id, text="It may take some time.\nWhile saving file on your device, add '.mp3', it will help your phone to play audio")
                     video = send_video_inst(link)
                     await bot.send_video(chat_id=message.chat.id, video=video)
-                    # if send_audio(link):
-                        
-                    #     audio = types.InputFile('audio.mp3')
-                    #     await bot.send_audio(chat_id=message.chat.id, audio=audio)
-                    #     os.remove('audio.mp3')
+                    
+                    logger.info(f"{message.from_user.id}|{message.from_user.full_name}| THE PROCES ENDS")
+                except Exception as er:
+                    await message.reply(f"There was an error: \n{er}")
+                    logger.error(f"There was an error: {er}")
+            elif content_type == "profile":
+                try:
+                    logger.info(f"{message.from_user.id}|{message.from_user.full_name}| THE PROCES BEGINS")
+                    if send_profile(link):
+                        with open(f'{link}.zip', 'rb') as zip_file:
+                            await bot.send_document(chat_id=message.chat.id, document=zip_file)
+                            os.remove(f'{link}.zip') 
+                            rmtree(link)
+                    
                     logger.info(f"{message.from_user.id}|{message.from_user.full_name}| THE PROCES ENDS")
                 except Exception as er:
                     await message.reply(f"There was an error: \n{er}")

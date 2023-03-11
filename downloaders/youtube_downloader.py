@@ -49,36 +49,37 @@ def send_audio(url: str):
 
         # Get the audio stream from the video
         audio_stream = youtube.streams.get_audio_only()
+        audio_filename = audio_stream.default_filename[:-4]
 
         if  audio_stream.filesize > size_threshold:
             logger.error(f'File size is {audio_stream.filesize_mb}| IS A MINIMUM')
             raise Exception('File too large for uploading. Telegram limited us to 50mb')
-        
-
-        audio_bytes = io.BytesIO()
-        audio_stream.stream_to_buffer(audio_bytes)
         logger.info(f'File size is {audio_stream.filesize_mb}mb')
-        # Get the bytes of the audio
-        return audio_bytes.getvalue()
+
+        # audio_bytes = io.BytesIO()
+        # audio_stream.stream_to_buffer(audio_bytes)
+        
+        # # Get the bytes of the audio
+        # return audio_bytes.getvalue()
         # audio_stream.download
 
-        # # Define the download and conversion functions
-        # def download_audio(audio_stream):
-        #     audio_file = audio_stream.download(output_path="./", filename="audio")
-        #     return audio_file
+        # Define the download and conversion functions
+        def download_audio(audio_stream):
+            audio_file = audio_stream.download(output_path="./", filename=audio_filename)
+            return audio_file
 
-        # def convert_audio(audio_file):
-        #     subprocess.run(['ffmpeg', '-i', audio_file, '-codec:a', 'libmp3lame', '-qscale:a', '2', 'audio.mp3'])
-        #     os.remove(audio_file)
+        def convert_audio(audio_file):
+            subprocess.run(['ffmpeg', '-i', audio_file, '-codec:a', 'libmp3lame', '-qscale:a', '2', f'{audio_filename}.mp3'])
+            os.remove(audio_file)
             
 
-        # # Download and convert the audio file concurrently
-        # with ThreadPoolExecutor(max_workers=2) as executor:
-        #     download_task = executor.submit(download_audio, audio_stream)
-        #     audio_file = download_task.result()
-        #     convert_task = executor.submit(convert_audio, audio_file)
-        #     convert_task.result()
-        # return True
+        # Download and convert the audio file concurrently
+        with ThreadPoolExecutor(max_workers=2) as executor:
+            download_task = executor.submit(download_audio, audio_stream)
+            audio_file = download_task.result()
+            convert_task = executor.submit(convert_audio, audio_file)
+            convert_task.result()
+        return audio_filename
     except Exception as ex:
         raise ex
 
@@ -91,3 +92,5 @@ def send_audio(url: str):
 # send_audio('https://youtu.be/99vdFmw9-Z8')
 # elapsed = time.perf_counter() - s
 # print(f"executed in {elapsed:0.5f} seconds.")
+
+

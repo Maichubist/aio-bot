@@ -13,7 +13,7 @@ markup_yt.add(
 )
 markup_inst = InlineKeyboardMarkup(row_width=2, resize_keyboard=True, one_time_keyboard=True, input_field_placeholder='SOMETHING')
 markup_inst.add(
-    InlineKeyboardButton("Photo (DON`T USE)", callback_data="inst_photoi", 
+    InlineKeyboardButton("First 12 posts of profile", callback_data="inst_profile", 
                          style='primary',    # set button style to primary
                          text_color='white', # set text color to white
                          background_color='#ff0000'), # set background color to red
