@@ -104,7 +104,7 @@ async def youtube_processer(callback_query: types.CallbackQuery):
             if content_type == "audio":
                 try:
                     logger.info(f"{message.from_user.id}|{message.from_user.full_name}| THE PROCES BEGINS")
-                    await bot.send_message(chat_id=message.chat.id, text="It may take some time.\nWhile saving file on your device, add '.mp3', it will help your phone to play audio")
+                    await bot.send_message(chat_id=message.chat.id, text="It may take some time.")
                     audio_name = send_audio(link)
                     with open(f'{audio_name}.mp3', 'rb') as audio:
 
